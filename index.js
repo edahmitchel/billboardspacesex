@@ -25,7 +25,7 @@ db.once("open", function () {
 // password reset
 //  Create a transporter to send emails using nodemailer
 const transporter = nodemailer.createTransport({
-  service: process.env.EMAIL_SERVICE,
+  service: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASSWORD,
@@ -52,7 +52,7 @@ app.post("/reset-password", async (req, res) => {
         html: `
     <h1>Password Reset</h1>
     <p>Please click the link below to reset your password:</p>
-    <a href="${process.env.CLIENT_URL}/reset-password/${resetToken}">${process.env.CLIENT_URL}/reset-password/${resetToken}</a>
+    <a href="${process.env.APP_URL}/reset-password/${resetToken}">${process.env.APP_URL}/reset-password/${resetToken}</a>
   `,
       };
 
